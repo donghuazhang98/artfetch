@@ -2,9 +2,9 @@
 
 Contributors:
 • [Moling Chen](./team/molingchen.md)
-• Yuting Chen
-• Weichen Luo
-• Donghua Zhang
+• [Yuting Chen](./team/yutingchen.md)
+• [Weichen Luo](./team/weichenluo.md)
+• [Donghua Zhang](./team/donghuazhang.md)
 
 Overview:
 • We are creating a art website that users can post their art work on it, and they also can give comments on the art pieces.
