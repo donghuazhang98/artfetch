@@ -1,10 +1,17 @@
 # artfetch
 
 Contributors:
-1. Moling Chen 
-2. Yuting Chen
-3. Weichen Luo
-4. Donghua Zhang
+• Moling Chen 
+• Yuting Chen
+• Weichen Luo
+• Donghua Zhang
 
 Overview:
-we are creating a art website that users can post their art work on it, and 
+• We are creating a art website that users can post their art work on it, and they also can give comments on the art pieces.
+• Students with art major would use this website to apperciate and show the exhibitions. 
+
+Requirement:
+• Data storage
+• Server-Side
+
+
