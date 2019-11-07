@@ -1,7 +1,7 @@
 # artfetch
 
 Contributors:
-• Moling Chen 
+• Moling Chen (/team/molingchen.md)
 • Yuting Chen
 • Weichen Luo
 • Donghua Zhang
