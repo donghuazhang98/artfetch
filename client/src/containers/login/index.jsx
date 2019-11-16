@@ -2,8 +2,6 @@
 user login router component
 */
 import React from 'react'
-import SignInForm from './signInForm'
-import SignUpForm from './signUpForm'
 import './index.scss'
 import img from './img/john-wallin-liberto-thingamajiggre2small.jpg'
 
