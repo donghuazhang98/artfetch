@@ -6,6 +6,12 @@ $grey: #979A9A;
 
 body {
     font-family: 'Raleway', sans-serif;
+    height: 100%;
+    background-image: url("./img/close-up-photo-of-painting-3219899.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
     .container {
         overflow: hidden;
         position: relative;
