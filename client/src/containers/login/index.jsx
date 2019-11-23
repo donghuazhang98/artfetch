@@ -4,9 +4,6 @@ user login router component
 import React from 'react'
 import './index.scss'
 import img from './img/john-wallin-liberto-thingamajiggre2small.jpg'
-import backgroundimg from './img/close-up-photo-of-painting-3219899.jpg'
-import BackGround from './background'
-
 
 export default class Login extends React.Component { 
     constructor(props) {
@@ -35,8 +32,7 @@ export default class Login extends React.Component {
 
 
     render() {
-        return (
-            
+        return (     
                 <div className="container">
                     <div className="first-half">
                         <h1 className="title">ArtFetch</h1>
@@ -100,7 +96,6 @@ export default class Login extends React.Component {
                         />
                     </div>
                 </div>
-           
         ) 
     }
 }
