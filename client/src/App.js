@@ -1,10 +1,22 @@
-import React, { Component } from "react"
-import Login from './containers/login'
+import React from "react"
+import { HashRouter, Switch, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
-class App extends Component {
+import store from './redux/store'
+import Login from './containers/login'
+import Main from './containers/main'
+
+class App extends React.Component {
   render() {
     return (
-      <Login />  
+      <Provider store={store}>
+        <HashRouter>
+          <Switch>
+            <Route path='/login' component={Login} />
+            <Route component={Main} />
+          </Switch>
+        </HashRouter>
+      </Provider>    
     );
   }
 }
