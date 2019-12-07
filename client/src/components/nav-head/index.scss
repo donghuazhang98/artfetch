@@ -1,0 +1,27 @@
+.main-menu {
+    justify-content: center;
+    display: flex;
+    align-items: stretch;
+    background: #6a89cc;
+    height: 55px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    .main-menu-title {
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        color: black;
+        font-size: x-large;
+    }
+
+    .main-menu-search {
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
+    }
+}
