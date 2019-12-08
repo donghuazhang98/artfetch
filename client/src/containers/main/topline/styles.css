@@ -1,0 +1,69 @@
+#TopLine{ 
+ 
+  width: 100%; 
+
+  border: 1px solid red; 
+
+} 
+
+#Menu{ 
+
+  float:left; 
+
+  width:250px; 
+
+  height: 50px; 
+
+  border:1px solid #CCC; 
+
+  display:block; 
+
+  background-color:yellow; 
+
+} 
+
+#Search{ 
+
+  margin-left:260px; 
+
+  min-height:50px; 
+
+  display:block; 
+
+  background-color:red; 
+
+} 
+
+#Person{ 
+
+  float:right; 
+
+  display:block; 
+
+  height:50px; 
+
+  background-color:#FFF; 
+
+} 
+
+#Search > .inner{ 
+
+  height:50px; 
+
+  background-color:red; 
+
+  margin-right:20px; 
+
+} 
+
+#Person > .inner{ 
+
+  background-color:green; 
+
+  min-width:150px; 
+
+  height:50px; 
+
+  margin-left:10px; 
+
+}
