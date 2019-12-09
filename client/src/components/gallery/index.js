@@ -3,10 +3,12 @@ import ReactDOM from "react-dom";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { photos } from "./photos";
+import * as title from './title/gallery-title.png' 
 
-import "./styles.css";
+import "./styles.scss";
 
-function App() {
+function App(props) {
+
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -22,6 +24,9 @@ function App() {
 
   return (
     <div>
+      <div className='gallery-title'>
+        <img src={title} />
+      </div>
       <Gallery photos={photos} onClick={openLightbox} />
       <ModalGateway>
         {viewerIsOpen ? (
@@ -41,9 +46,8 @@ function App() {
   );
 }
 
-const BasicRows = () => <Gallery photos={photos} />;
+//const BasicRows = () => <Gallery photos={this.props.photos} />;
 
 export default App;
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+

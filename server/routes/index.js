@@ -41,10 +41,20 @@ router.post('/login', function(req, res) {
       res.send({ code: 1, msg: 'wrong username or password' })
     } else {
         res.cookie('userid', user._id, { maxAge: 1000*60*60*24*7})
-
         res.send({ code: 0, data: user })
       }
   })
+})
+
+router.get('/user', function(req, res){
+  const userid = req.cookies.userid
+  if (!userid) {
+    return res.send({code: 1, msg: 'please log in first'})
+  } else {
+    UserModel.findOne({_id: userid}, function(err, user) {
+      return res.send({code: 0, data: user})
+    })
+  }
 })
 
 module.exports = router
