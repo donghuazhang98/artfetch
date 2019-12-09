@@ -65,3 +65,7 @@ export const getUser = () => {
     }
 }
 
+export const upload = () => {
+    
+}
+
