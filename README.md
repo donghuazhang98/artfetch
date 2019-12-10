@@ -7,8 +7,9 @@ Contributors:
 • [Donghua Zhang](./team/donghuazhang.md)
 
 Overview:
-• We are creating a art website that users can post their art work on it.
-• Students with art major would use this website to apperciate and show the exhibitions. 
+• We are creating a art website that exhibits the art gallery and users can post their art work on their profile pages
+• Each user information will be stored in the database created in server side
+• Each user's portfolio will be stored in the cloud database of firebase
 
 Technique:
 • Javascript
