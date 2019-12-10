@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { getUser } from '../../redux/actions'
 import Cookies from 'js-cookie'
 
+import TopLine from '../../components/topBar'
+
 class Post extends React.Component { 
     componentDidMount() {
         const userid = Cookies.get('userid')
@@ -17,6 +19,7 @@ class Post extends React.Component {
         //console.log(this.props.user)
         return (
             <div>
+                <TopLine />
                 <Upload user={this.props.user} />
             </div>    
         )
