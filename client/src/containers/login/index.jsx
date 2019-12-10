@@ -95,7 +95,7 @@ class Login extends React.Component {
                             <form action="#" method="post">
                                 <div className="input-group">
                                     <input className="input" placeholder="Username" onChange={val => {val.persist();this.loginHandleChange('username', val)}} />
-                                    <input className="input" placeholder="Password" onChange={val => this.loginHandleChange('password', val)} />
+                                    <input className="input" type="password" placeholder="Password" onChange={val => this.loginHandleChange('password', val)} />
                                 </div>
                                 <div className="submit-group">
                                     <input type="button" className="submit" value="Log in" onClick={this.login} />
@@ -114,8 +114,8 @@ class Login extends React.Component {
                                 <div className="input-group">
                                     <input className="input" placeholder="Username" onChange={val => this.signupHandleChange('username', val)} />
                                     <input className="input" placeholder="Email" onChange={val => this.signupHandleChange('email', val)} />
-                                    <input className="input" placeholder="Password" onChange={val => this.signupHandleChange('password', val)} />
-                                    <input className="input" placeholder="Password confirm" onChange={val => this.signupHandleChange('password2', val)} />
+                                    <input className="input" type="password" placeholder="Password" onChange={val => this.signupHandleChange('password', val)} />
+                                    <input className="input" type="password" placeholder="Password confirm" onChange={val => this.signupHandleChange('password2', val)} />
                                 </div>
                                 <div className="submit-group">
                                     <input type="button" className="submit" value="Sign up" onClick={this.signup} />

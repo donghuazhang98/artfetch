@@ -13,7 +13,7 @@ import {
 const errorMsg = (msg) => ({ type: ERROR_MSG, data: msg })
 const authSuccess = (user) => ({ type: AUTH_SUCCESS, data: user })
 const receiveUser = (user) => ({ type: RECEIVE_USER, data:user })
-const resetUser = (msg) => ({type: RESET_USER, data: msg})
+export const resetUser = (msg) => ({type: RESET_USER, data: msg})
 
 export const signup = (user) => {
     const {username, password, password2, email} = user

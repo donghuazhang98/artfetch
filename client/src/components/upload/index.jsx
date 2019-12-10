@@ -3,6 +3,8 @@ import ImageUploader from 'react-images-upload'
 import { storage, database } from '../../firebase'
 import { Redirect } from 'react-router-dom'
 
+import './index.scss'
+
 class Upload extends React.Component {
     constructor(props) {
         super(props);
@@ -60,13 +62,15 @@ class Upload extends React.Component {
                     singleImage={true}
                     withLabel={false}
                 />
-                <button
-                    onClick={this.uploadHandler}
-                >
-                    upload
-                </button>
-            </div>
-                
+                <div className='post-bar'>
+                    <button
+                        onClick={this.uploadHandler}
+                        className='post-button'
+                    >
+                        upload
+                    </button>
+                </div>   
+            </div>      
         )
     }
 }

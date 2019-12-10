@@ -3,9 +3,10 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { connect } from 'react-redux'
 
-import { getUser } from '../../redux/actions'
+import { getUser, resetUser } from '../../redux/actions'
 import DemoCarousel from '../../components/carousel'
 import DemoGallery from '../../components/gallery'
+import TopLine from '../../components/topBar'
 
 import Info from '../info'
 import Profile from '../profile'
@@ -35,12 +36,15 @@ class Main extends React.Component {
         }
 
         return(
-            <Info />
+            <div>
+                <TopLine />
+                <Info />
+            </div>    
         )
     }
 }
 
 export default connect(
    state =>  ({ user: state.user }),
-   { getUser }
+   { getUser, resetUser }
 )(Main)
