@@ -53,7 +53,7 @@ export default class ProGallery extends React.Component {
     componentDidMount() {
         const { username } = this.props.user
         const data = database.ref(`users/${username}/images`)
-        console.log(this.props.user)
+        //console.log(this.props.user)
         data.once('value', (snapshot, preChildKey) => {
             snapshot.forEach((childSnapShot) => {
                 let childKey = childSnapShot.key

@@ -1,6 +1,7 @@
 import React from 'react'
 import ImageUploader from 'react-images-upload'
 import { storage, database } from '../../firebase'
+import { Redirect } from 'react-router-dom'
 
 class Upload extends React.Component {
     constructor(props) {
@@ -14,7 +15,6 @@ class Upload extends React.Component {
     fileDropHandler = pict => {
         this.setState({
             pictures: this.state.pictures.concat(pict),
-            upload: true
         })
     }
 
@@ -39,30 +39,35 @@ class Upload extends React.Component {
                 database.ref(`users/${username}/images`).push(obj)
             })
         })
+        this.setState({
+            upload: true
+        })
     }
 
     render() {
         //console.log(this.state.pictures[0])
-            return (
-                <div>
-                    <ImageUploader
-                        withIcon={false}
-                        buttonText='select image'
-                        onChange={this.fileDropHandler}
-                        imgExtension={['.jpg', '.png', 'jpeg']}
-                        withPreview={true}
-                        singleImage={true}
-                        withLabel={false}
-
-                    />
-                    <button
-                        onClick={this.uploadHandler}
-                    >
-                        upload
-                    </button>
-                </div>
+        if (this.state.upload) {
+            return <Redirect to={'/profile'} />
+        }
+        return (
+            <div>
+                <ImageUploader
+                    withIcon={false}
+                    buttonText='select image'
+                    onChange={this.fileDropHandler}
+                    imgExtension={['.jpg', '.png', 'jpeg']}
+                    withPreview={true}
+                    singleImage={true}
+                    withLabel={false}
+                />
+                <button
+                    onClick={this.uploadHandler}
+                >
+                    upload
+                </button>
+            </div>
                 
-            )
+        )
     }
 }
 
