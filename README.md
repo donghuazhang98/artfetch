@@ -3,7 +3,7 @@
 Contributors:
 • [Moling Chen](./team/molingchen.md)
 • [Yuting Chen](./team/yutingchen.md)
-• [Weichen Luo](weichenluo)
+• [Weichen Luo](./team/weichenluo.md)
 • [Donghua Zhang](./team/donghuazhang.md)
 
 Overview:
