@@ -8,7 +8,7 @@ import * as title from './title/gallery-title.png'
 import "./styles.scss";
 
 function App(props) {
-
+  
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
