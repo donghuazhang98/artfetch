@@ -28,5 +28,6 @@ Technique:
 run this command in both server side and client side, to install the required packages
 
 ### `npm start`
-Runs the app in the development mode.
-Open http://localhost:3000 to view it in the browser.
+Runs both server side and client side in the development mode.
+Open http://localhost:3000 to view the client side in the browser.
+
