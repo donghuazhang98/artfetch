@@ -22,4 +22,4 @@ Technique:
 • Firebase
 • MongoDB
 • Ajax
-• Server-Side
+
