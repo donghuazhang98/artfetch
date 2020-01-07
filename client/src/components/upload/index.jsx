@@ -1,7 +1,11 @@
 import React from 'react'
 import ImageUploader from 'react-images-upload'
-import { storage, database } from '../../firebase'
-import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { storage } from '../../firebase'
+
+import { reqUploadImage } from '../../api'
+
+import axios from 'axios'
 
 import './index.scss'
 
@@ -10,7 +14,6 @@ class Upload extends React.Component {
         super(props);
         this.state = {
             pictures: [],
-            upload: false
         }
     }
 
@@ -22,35 +25,37 @@ class Upload extends React.Component {
 
     uploadHandler = () => {
         let username = this.props.user.username
-        //console.log(username)
         const img = this.state.pictures[this.state.pictures.length-1]
-        //console.log(img)
-        const uploadTask = storage.ref(`images/${username}/${img.name}`).put(img)
+
+        let uploadTask = storage.ref(`images/${username}/${img.name}`).put(img)
         uploadTask.on('state_changed',
-        (snapshot) => {}
-        ,
-        (error) => {
-            console.log(error)
-        },
-        () => {
-            let url = storage.ref(`images/${username}`).child(img.name).getDownloadURL().then(url => {
-                //console.log(url)
-                let obj = {
-                    image: url
-                }
-                database.ref(`users/${username}/images`).push(obj)
-            })
-        })
-        this.setState({
-            upload: true
+            (snapshot) => {},
+            (error) => {
+                console.log(error)
+            },
+            () => {
+                let url = storage.ref(`images/${username}`).child(img.name).getDownloadURL().then(url => {
+                    let imageObj = {
+                        imageName: img.name,
+                        imageData: url
+                    }
+                    //console.log(imageObj)
+                    reqUploadImage(imageObj)
+                        .then((data) => {
+                            if (data.data) {
+                                console.log(data.data)
+                                this.props.history.push('/profile')
+                                this.props.history.go()
+                            }
+                        })
+                        .catch((err) => {
+                            alert(err)
+                        })
+                })
         })
     }
 
     render() {
-        //console.log(this.state.pictures[0])
-        if (this.state.upload) {
-            return <Redirect to={'/profile'} />
-        }
         return (
             <div>
                 <ImageUploader
@@ -75,4 +80,4 @@ class Upload extends React.Component {
     }
 }
 
-export default Upload
+export default withRouter(Upload)

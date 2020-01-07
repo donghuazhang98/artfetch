@@ -7,9 +7,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import PersonIcon from "@material-ui/icons/Person";
 import Fab from "@material-ui/core/Fab";
 
-import Cookies from 'js-cookie'
-import { Redirect } from 'react-router-dom'
-
 const StyledMenu = withStyles({
   paper: {
     border: "1px solid #d3d4d5"
@@ -42,8 +39,6 @@ const StyledMenuItem = withStyles(theme => ({
 }))(MenuItem);
 
 export default function CustomizedMenus(props) {
-  const [toProfile, setToProfile] = React.useState(false);
-
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -53,10 +48,6 @@ export default function CustomizedMenus(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  if (toProfile) {
-      return <Redirect to={'./profile'} />
-  }
 
   return (
     <div>
@@ -76,7 +67,7 @@ export default function CustomizedMenus(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem onClick={()=>{setToProfile(true)}}>
+        <StyledMenuItem onClick={()=>{props.history.push('/profile')}}>
           <ListItemText primary="My account" />
         </StyledMenuItem>
         <StyledMenuItem>
