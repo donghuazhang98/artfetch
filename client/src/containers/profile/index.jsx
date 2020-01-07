@@ -3,8 +3,6 @@ import ProGallery from '../../components/profile-gallery'
 import './index.scss'
 import Cookies from 'js-cookie'
 import { connect } from 'react-redux'
-import { storage, database } from '../../firebase'
-import TopLine from '../../components/topBar'
 
 import { Redirect } from 'react-router-dom'
 
@@ -40,13 +38,9 @@ class Profile extends React.Component {
 
         const { username, email } = this.props.user
                 
-        //console.log(this.props.user.username)
-        //console.log(this.state.img)
-        //console.log(this.props.user)
         if (username) {
             return (
                 <div>
-                    <TopLine />
                     <div className='artist-head'>
                         <div className='artist-info'>
                             <div className='avatar'>

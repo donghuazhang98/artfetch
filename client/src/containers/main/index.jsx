@@ -3,14 +3,12 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { connect } from 'react-redux'
 
-import { getUser, resetUser } from '../../redux/actions'
-import DemoCarousel from '../../components/carousel'
-import DemoGallery from '../../components/gallery'
-import TopLine from '../../components/topBar'
-
-import Info from '../info'
+import MainInfo from '../mainInfo'
 import Profile from '../profile'
 import Post from '../post'
+import TopBar from '../../components/topBar'
+
+import { getUser, resetUser } from '../../redux/actions'
 
 import './index.scss'
 
@@ -37,8 +35,12 @@ class Main extends React.Component {
 
         return(
             <div>
-                <TopLine />
-                <Info />
+                <TopBar className='top-bar' />
+                <Switch>
+                    <Route path='/post' component={Post} />
+                    <Route path='/profile' component={Profile} />
+                    <Route path='/' component={MainInfo} />
+                </Switch>
             </div>    
         )
     }

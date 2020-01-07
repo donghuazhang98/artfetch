@@ -16,6 +16,7 @@ const userSchema = mongoose.Schema({
     header: {type: String},
     post: {type: String},
     info: {type: String},
+    images: {type: [Object]}
 });
 
 const UserModel = mongoose.model('user', userSchema)

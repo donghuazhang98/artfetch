@@ -57,4 +57,21 @@ router.get('/user', function(req, res){
   }
 })
 
+router.post('/uploadImage', function(req, res, next){
+  const { imageName, imageData } = req.body
+  const newImage = {
+    imageName: imageName,
+    imageData: imageData
+  }
+  const userid = req.cookies.userid
+
+  UserModel.findByIdAndUpdate({_id: userid}, { $push: { images: newImage} }, function(err, user) {
+    if (err) {
+      console.log(err)
+    } else {
+      res.send({code: 0, data: user})
+    }
+  })
+})
+
 module.exports = router

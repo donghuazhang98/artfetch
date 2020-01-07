@@ -49,7 +49,7 @@ export default class Tile extends React.Component {
             <div className='tile'>
                 <img 
                     onClick={this.handlerClick}
-                    src={this.props.img.image}
+                    src={this.props.img.imageData}
                     //alt={this.props.img.name}
                     style={tileStyle}
                 />

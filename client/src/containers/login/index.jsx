@@ -1,6 +1,3 @@
-/*
-user login router component
-*/
 import React from 'react'
 import './index.scss'
 import { connect } from 'react-redux'
@@ -64,7 +61,7 @@ class Login extends React.Component {
     }
 
     render() {
-        const {redirectTo, msg} = this.props
+        const {redirectTo} = this.props
         if (redirectTo) {
             return <Redirect to={redirectTo} />
         }
