@@ -1,0 +1,102 @@
+
+.footer {
+    background-color: #679b9b;
+    padding: 90px 105px 25px 105px;
+    color: #d6d9db;
+    .top-footer {
+      padding: 0 0 50px;
+      border-bottom: 1px solid #ffffff;
+    }
+    .footer-logo a {
+      font-size: 1.5rem;
+      color: #ffffff;
+      opacity: 0.75;
+    }
+    .tagline {
+      font-size: 0.875rem;
+      margin: 0;
+      padding: 5px 0 15px;
+      color: #fff;
+      opacity: 0.5;
+    }
+    h4 {
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: #d6d9db;
+      line-height: 22px;
+      margin: 14px 0 0;
+      padding: 0 0 25px;
+    }
+    .footer-link {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 16px;
+      font-weight: normal;
+      a {
+        text-decoration: none;
+        color: #fff;
+        opacity: 0.75;
+        display: block;
+        padding-bottom: 20px;
+        cursor: pointer;
+      }
+    }
+    .social-icons {
+      display: inline-block !important;
+      padding-bottom: 8px !important;
+      margin-right: 15px;
+    }
+    .bottom-footer {
+      padding: 30px 0 0;
+      .copyright {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        opacity: 0.75;
+      }
+      .scc-footer-logo a {
+        font-size: 1.5rem;
+        color: #ffffff;
+        margin-bottom: 15px;
+        display: block;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 1199px) {
+    .navbar-collapse {
+      right: 3% !important;
+    }
+    .navbar {
+      padding: 20px 50px;
+    }
+    .footer {
+      padding: 45px 50px 25px 50px;
+    }
+  }
+  
+  @media only screen and (max-width: 991px) {
+    .navbar {
+      padding: 20px 30px;
+    }
+    .footer {
+      padding: 20px 30px;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .navbar {
+      padding: 25px;
+    }
+    .footer {
+      padding: 25px;
+    }
+  }
+  .icons {
+    display: inline-grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 16px;
+  }

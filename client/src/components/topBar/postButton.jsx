@@ -5,7 +5,7 @@ import Fab from "@material-ui/core/Fab";
 
 export default class PostButton extends React.Component {
     handleClick = () => {
-        this.props.history.push('/post')
+        this.props.history.push(this.props.navList[1].path)
     }
     
     render() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import ProGallery from '../../components/profile-gallery'
+import ProGalleryUp from '../../components/profile-gallery-updated'
 import './index.scss'
 import Cookies from 'js-cookie'
 import { connect } from 'react-redux'
@@ -59,7 +59,7 @@ class Profile extends React.Component {
                         </div>
                     </div>
                     <div className='artist-content'>
-                        <ProGallery user={this.props.user} />
+                        <ProGalleryUp user={this.props.user} />
                     </div>
                 </div>
             )

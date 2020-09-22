@@ -37,15 +37,14 @@
                 }
                 .logout-button {
                     margin-top: 20px;
-                    width: 50px;
-                    height: 20px;
                     border-radius: 30px;
-                    outline:none;
+                    border-width: 0ch;                  
+                }
+                .logout-button:hover {
+                    background-color: #9f9f9f;
                 }   
             }
         }
-        .artist-content {
-            
-        }
+
     }
 

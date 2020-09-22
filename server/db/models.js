@@ -1,6 +1,6 @@
 //connect to mongodb
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/artfetch_users');
+mongoose.connect('mongodb://localhost:27017/artfetch_users', { useUnifiedTopology: true, useNewUrlParser: true });
 
 //gain the connection object
 const conn = mongoose.connection

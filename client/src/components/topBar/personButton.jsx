@@ -67,11 +67,14 @@ export default function CustomizedMenus(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem onClick={()=>{props.history.push('/profile')}}>
-          <ListItemText primary="My account" />
+        <StyledMenuItem onClick={()=>{props.history.push(props.navList[0].path)}}>
+          <ListItemText primary="My Profile" />
         </StyledMenuItem>
         <StyledMenuItem>
-          <ListItemText primary="Messages" />
+          <ListItemText primary="Edit Profile" />
+        </StyledMenuItem>
+        <StyledMenuItem>
+          <ListItemText primary="Settings" />
         </StyledMenuItem>
       </StyledMenu>
     </div>
