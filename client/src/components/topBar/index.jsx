@@ -20,11 +20,10 @@ class TopBar extends React.Component {
         </div>
         <div className='rightBar'>
             <div className='Post'>
-                <PostButton history={this.props.history} />
+                <PostButton history={this.props.history} navList={this.props.navList} />
             </div>
             <div className="Person">
-                {/* <MenuButton/> */}
-                <PersonButton history={this.props.history} />
+                <PersonButton history={this.props.history} navList={this.props.navList} />
             </div>
         </div>
       </div>

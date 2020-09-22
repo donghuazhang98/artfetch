@@ -14,7 +14,6 @@ class Post extends React.Component {
     }
     
     render() {
-        //console.log(this.props.user)
         return (
             <div>
                 <Upload user={this.props.user} />

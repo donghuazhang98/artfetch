@@ -27,8 +27,8 @@ export default class Tile extends React.Component {
         let tileStyle = {}
         if (this.state.open) {
             tileStyle = {
-                width: '62vw',
-                height: '62vw',
+                width: this.props.img.imageWidth,
+                height: this.props.img.imageHeight,
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
@@ -50,7 +50,6 @@ export default class Tile extends React.Component {
                 <img 
                     onClick={this.handlerClick}
                     src={this.props.img.imageData}
-                    //alt={this.props.img.name}
                     style={tileStyle}
                 />
             </div>

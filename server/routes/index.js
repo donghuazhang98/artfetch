@@ -1,6 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
+var probe = require('probe-image-size')
+
 const md5 = require('blueimp-md5')
 const UserModel = require('../db/models').UserModel
 //const filter = { password: 0 }
@@ -58,19 +60,30 @@ router.get('/user', function(req, res){
 })
 
 router.post('/uploadImage', function(req, res, next){
-  const { imageName, imageData } = req.body
+  const { imageName, src } = req.body
+
   const newImage = {
     imageName: imageName,
-    imageData: imageData
+    src: src,
   }
-  const userid = req.cookies.userid
 
-  UserModel.findByIdAndUpdate({_id: userid}, { $push: { images: newImage} }, function(err, user) {
-    if (err) {
-      console.log(err)
-    } else {
-      res.send({code: 0, data: user})
+  probe(src).then(result => {
+    const newImage = {
+      imageName: imageName,
+      src: src,
+      width: result.width,
+      height: result.height
     }
+    console.log(newImage)
+    const userid = req.cookies.userid
+
+    UserModel.findByIdAndUpdate({_id: userid}, { $push: { images: newImage} }, function(err, user) {
+      if (err) {
+        console.log(err)
+      } else {
+        res.send({code: 0, data: user})
+      }
+    })
   })
 })
 

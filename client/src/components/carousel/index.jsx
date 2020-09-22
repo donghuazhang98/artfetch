@@ -27,12 +27,6 @@ class DemoCarousel extends Component {
         </div>
         <div style={{ height: "100%", color: "#fff" }}>
           <img
-            src="https://cdnb.artstation.com/p/assets/images/images/022/162/057/large/gaelle-seguillon-sl-wnw-oasis-v001-001-gs.jpg?1574338472"
-            alt="404.png"
-          />
-        </div>
-        <div style={{ height: "100%", color: "#fff" }}>
-          <img
             src="https://cdna.artstation.com/p/assets/images/images/022/312/198/large/ffie-yu-2.jpg?1574942667"
             alt="404.png"
           />

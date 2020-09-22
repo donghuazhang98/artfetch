@@ -5,8 +5,6 @@ import { storage } from '../../firebase'
 
 import { reqUploadImage } from '../../api'
 
-import axios from 'axios'
-
 import './index.scss'
 
 class Upload extends React.Component {
@@ -23,9 +21,14 @@ class Upload extends React.Component {
         })
     }
 
+    handleSize(image) {
+        console.log(image.offsetWidth, image.offsetHeight)
+    }
+
     uploadHandler = () => {
         let username = this.props.user.username
         const img = this.state.pictures[this.state.pictures.length-1]
+        console.log(img)
 
         let uploadTask = storage.ref(`images/${username}/${img.name}`).put(img)
         uploadTask.on('state_changed',
@@ -35,11 +38,11 @@ class Upload extends React.Component {
             },
             () => {
                 let url = storage.ref(`images/${username}`).child(img.name).getDownloadURL().then(url => {
+                    
                     let imageObj = {
                         imageName: img.name,
-                        imageData: url
+                        src: url, 
                     }
-                    //console.log(imageObj)
                     reqUploadImage(imageObj)
                         .then((data) => {
                             if (data.data) {
