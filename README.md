@@ -1,7 +1,7 @@
 # artfetch
 
 Overview:
-- A demo art website that exhibits the CG gallery 
+- An art website demo that exhibits the CG gallery 
 - Users can post their art work on their profile pages and view other artists' exhibitions
 
 # run
