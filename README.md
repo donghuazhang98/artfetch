@@ -6,11 +6,15 @@ Overview:
 • Each user's portfolio will be stored in the cloud database of firebase
 
 # run
-Go to the server directory 
-### `npm start`
+First go in the server directory, run:
+### ‘npm start’
 
-Go to the client directory 
-### `npm start`
+In the client directory, run:
+
+### ‘npm start’
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
+
 
 
 
