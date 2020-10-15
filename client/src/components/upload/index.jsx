@@ -28,7 +28,7 @@ class Upload extends React.Component {
     uploadHandler = () => {
         let username = this.props.user.username
         const img = this.state.pictures[this.state.pictures.length-1]
-        console.log(img)
+        // console.log(img)
 
         let uploadTask = storage.ref(`images/${username}/${img.name}`).put(img)
         uploadTask.on('state_changed',
@@ -46,8 +46,8 @@ class Upload extends React.Component {
                     reqUploadImage(imageObj)
                         .then((data) => {
                             if (data.data) {
-                                console.log(data.data)
-                                this.props.history.push('/profile')
+                                // console.log(data.data)
+                                this.props.history.push(`/profile/${username}`)
                                 this.props.history.go()
                             }
                         })

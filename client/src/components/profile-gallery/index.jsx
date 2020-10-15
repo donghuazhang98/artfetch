@@ -1,7 +1,7 @@
-import React from 'react'
-import Tiles from './tiles'
+import React, { useState, useCallback } from "react";
+import Gallery from "react-photo-gallery";
 
-export default class ProGallery extends React.Component {
+export default class ProfileGallery extends React.Component {
     constructor(props) {
         super(props)
         this.state={
@@ -11,16 +11,15 @@ export default class ProGallery extends React.Component {
 
     componentDidMount() {
         const { images } = this.props.user
-        console.log(images)
         this.setState({
             imgs: this.state.imgs.concat(images)
         })
     }
-    
+
     render() {
-        console.log(this.state.imgs)
         return (
-            <Tiles data={this.state.imgs} />
+            <Gallery photos={this.state.imgs} />
         )
     }
 }
+

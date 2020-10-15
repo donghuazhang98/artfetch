@@ -1,6 +1,5 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -51,15 +50,9 @@ export default function CustomizedMenus(props) {
 
   return (
     <div>
-      <Button
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <Fab color="disabled" aria-label="Home" size="small">
-          <PersonIcon />
-        </Fab>
-      </Button>
+      <Fab color="default" aria-label="Home" size="small" onClick={handleClick}>
+        <PersonIcon />
+      </Fab>    
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
@@ -67,7 +60,7 @@ export default function CustomizedMenus(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem onClick={()=>{props.history.push(props.navList[0].path)}}>
+        <StyledMenuItem onClick={()=>{props.history.push(props.navList[0].path+`/${props.user.username}`)}}>
           <ListItemText primary="My Profile" />
         </StyledMenuItem>
         <StyledMenuItem>
@@ -75,6 +68,9 @@ export default function CustomizedMenus(props) {
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemText primary="Settings" />
+        </StyledMenuItem>
+        <StyledMenuItem onClick={()=>{props.logout()}} >
+          <ListItemText primary="Sign out" />
         </StyledMenuItem>
       </StyledMenu>
     </div>

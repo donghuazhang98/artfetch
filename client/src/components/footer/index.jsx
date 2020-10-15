@@ -22,7 +22,7 @@ class Footer extends React.Component {
                                         ArtFetch
                                     </a>
                                     <p className='tagline'>
-                                        A online demo gallery
+                                        An online demo gallery
                                     </p>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@ class Footer extends React.Component {
                                             href='mail-to:artfetch.official@gamil.com'
                                             title='Contact'
                                         >
-                                            artfetch.official@gamil.com
+                                            artfetch.official@gmail.com
                                         </a>
                                     </li>
                                     <li>

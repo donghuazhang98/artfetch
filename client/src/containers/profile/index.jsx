@@ -1,12 +1,12 @@
 import React from 'react'
-import ProGalleryUp from '../../components/profile-gallery-updated'
+import ProfileGallery from '../../components/profile-gallery'
 import './index.scss'
 import Cookies from 'js-cookie'
 import { connect } from 'react-redux'
 
 import { Redirect } from 'react-router-dom'
 
-import { getUser, resetUser } from '../../redux/actions'
+import { getUser, getUserProfile, resetUser } from '../../redux/actions'
 
 class Profile extends React.Component {
 
@@ -19,15 +19,10 @@ class Profile extends React.Component {
 
     componentDidMount() {
         const userid = Cookies.get('userid')
-        const { user } = this.props
+        const { user, match: { params } } = this.props
         if (userid && !user._id) {
-            this.props.getUser()
+            this.props.getUserProfile(params.username)
         }
-    }
-
-    handlerLogout = () => {
-        Cookies.remove('userid') 
-        this.props.resetUser()
     }
 
     render() {
@@ -49,17 +44,11 @@ class Profile extends React.Component {
                             <div className='artist-info-text'>
                                 <div className='artist-name'>{username}</div>
                                 <div className='artist-email'>{email}</div>
-                                <button
-                                    onClick={this.handlerLogout}
-                                    className='logout-button'
-                                >
-                                    logout
-                                </button>
                             </div>
                         </div>
                     </div>
                     <div className='artist-content'>
-                        <ProGalleryUp user={this.props.user} />
+                        <ProfileGallery user={this.props.user} />
                     </div>
                 </div>
             )
@@ -72,5 +61,5 @@ class Profile extends React.Component {
 
 export default connect(
     state => ({ user: state.user }),
-    { getUser, resetUser }
+    { getUser, getUserProfile, resetUser }
 )(Profile)
