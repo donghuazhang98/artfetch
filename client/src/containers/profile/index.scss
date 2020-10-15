@@ -39,4 +39,18 @@
         }
 
     }
+    .artist-content {
+        display: flex;
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        .image-info-text {
+            font-size: 13px;
+            color: #2c3e50;
+            justify-content: center;
+        }
+    }
+    
 

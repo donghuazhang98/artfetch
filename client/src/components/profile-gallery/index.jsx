@@ -10,9 +10,8 @@ export default class ProfileGallery extends React.Component {
     }
 
     componentDidMount() {
-        const { images } = this.props.user
         this.setState({
-            imgs: this.state.imgs.concat(images)
+            imgs: this.state.imgs.concat(this.props.imgs)
         })
     }
 

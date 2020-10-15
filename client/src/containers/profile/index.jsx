@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 
 import { Redirect } from 'react-router-dom'
 
+import { reqUserProfile } from '../../api'
 import { getUser, getUserProfile, resetUser } from '../../redux/actions'
 
 class Profile extends React.Component {
@@ -13,15 +14,39 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            username: '',
+            email: '',
             imgs: []
         }
     }
 
     componentDidMount() {
-        const userid = Cookies.get('userid')
-        const { user, match: { params } } = this.props
-        if (userid && !user._id) {
-            this.props.getUserProfile(params.username)
+        const { match: { params } } = this.props
+
+        reqUserProfile(params.username).then(({ data: user }) => {
+            this.setState({
+                username: user.data.username,
+                email: user.data.email,
+                imgs: user.data.images
+            })
+        })
+    }
+
+    // update when url changes 
+    componentDidUpdate(previousProps) {
+        // compare two url username parameters
+        const newUsername = this.props.match.params.username
+        const oldUsername = previousProps.match.params.username
+
+        if (oldUsername !== newUsername) {
+
+            reqUserProfile(newUsername).then(({ data: user }) => {
+                this.setState({
+                    username: user.data.username,
+                    email: user.data.email,
+                    imgs: user.data.images
+                })
+            })
         }
     }
 
@@ -30,28 +55,50 @@ class Profile extends React.Component {
         if (!userid) {
             return <Redirect to='/login' />
         }
-
-        const { username, email } = this.props.user
                 
-        if (username) {
-            return (
-                <div>
-                    <div className='artist-head'>
-                        <div className='artist-info'>
-                            <div className='avatar'>
-                                <img className='picture' src='http://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png' />
-                            </div>
-                            <div className='artist-info-text'>
-                                <div className='artist-name'>{username}</div>
-                                <div className='artist-email'>{email}</div>
+        if (this.state.username !== '') {
+            if (this.state.imgs.length) {
+                return (
+                    <div>
+                        <div className='artist-head'>
+                            <div className='artist-info'>
+                                <div className='avatar'>
+                                    <img className='picture' src='http://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png' />
+                                </div>
+                                <div className='artist-info-text'>
+                                    <div className='artist-name'>{this.state.username}</div>
+                                    <div className='artist-email'>{this.state.email}</div>
+                                </div>
                             </div>
                         </div>
+                        <div className='artist-content'>
+                            <ProfileGallery imgs={this.state.imgs} />
+                        </div>
                     </div>
-                    <div className='artist-content'>
-                        <ProfileGallery user={this.props.user} />
+                )
+            } else {
+                return (
+                    <div>
+                        <div className='artist-head'>
+                            <div className='artist-info'>
+                                <div className='avatar'>
+                                    <img className='picture' src='http://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png' />
+                                </div>
+                                <div className='artist-info-text'>
+                                    <div className='artist-name'>{this.state.username}</div>
+                                    <div className='artist-email'>{this.state.email}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='artist-content'>
+                            <div className='image-info-text'>
+                                No images uploaded.
+                            </div>
+                        </div>      
                     </div>
-                </div>
-            )
+                )
+            }
+            
         }
         else {
             return null
@@ -61,5 +108,5 @@ class Profile extends React.Component {
 
 export default connect(
     state => ({ user: state.user }),
-    { getUser, getUserProfile, resetUser }
+    { getUserProfile, resetUser }
 )(Profile)
