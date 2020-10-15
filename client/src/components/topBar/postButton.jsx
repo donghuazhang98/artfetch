@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Fab from "@material-ui/core/Fab";
 
@@ -10,11 +9,9 @@ export default class PostButton extends React.Component {
     
     render() {
         return (
-            <Button onClick={this.handleClick}>
-                    <Fab color="disabled" aria-label="Home" size="small">
-                        <AddRoundedIcon />
-                    </Fab>
-            </Button>
+                <Fab color="default" aria-label="Home" size="small" onClick={this.handleClick}>
+                    <AddRoundedIcon />
+                </Fab>
         )
     }
 }

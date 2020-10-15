@@ -19,7 +19,16 @@ const userSchema = mongoose.Schema({
     images: {type: [Object]}
 });
 
+const imageSchema = mongoose.Schema({
+    user: {type: String, required: true},
+    src: {type: String, required: true},
+    width: {type: Number, require: true},
+    height: {type: Number, required: true}
+});
+
 const UserModel = mongoose.model('user', userSchema)
+const ImageModel = mongoose.model('image', imageSchema)
 //export the model
 exports.UserModel = UserModel
+exports.ImageModel = ImageModel
 

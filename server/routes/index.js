@@ -59,6 +59,18 @@ router.get('/user', function(req, res){
   }
 })
 
+router.get('/user/:username', function(req, res){
+  const username = req.params.username
+
+  UserModel.findOne({username: username}, function(err, user) {
+    if (!user) {
+      res.send({ code: 1, msg: 'no such user' })
+    } else {
+      res.send({ code: 0, data: user })
+    }
+  })
+})
+
 router.post('/uploadImage', function(req, res, next){
   const { imageName, src } = req.body
 
@@ -69,12 +81,12 @@ router.post('/uploadImage', function(req, res, next){
 
   probe(src).then(result => {
     const newImage = {
-      imageName: imageName,
+      name: imageName,
       src: src,
       width: result.width,
       height: result.height
     }
-    console.log(newImage)
+    // console.log(newImage)
     const userid = req.cookies.userid
 
     UserModel.findByIdAndUpdate({_id: userid}, { $push: { images: newImage} }, function(err, user) {

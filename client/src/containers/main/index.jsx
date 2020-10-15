@@ -33,6 +33,11 @@ class Main extends React.Component {
         }
     }
 
+    handlerLogout = () => {
+        Cookies.remove('userid') 
+        this.props.resetUser()
+    }
+
     render() {
         const userid = Cookies.get('userid')
         if (!userid) {
@@ -46,10 +51,10 @@ class Main extends React.Component {
 
         return(
             <div>
-                <TopBar className='top-bar' navList={this.navList} />
+                <TopBar className='top-bar' navList={this.navList} user={user} logout={this.handlerLogout} />
                 <Switch>
                     <Route path='/post' component={Post} />
-                    <Route path='/profile' component={Profile} />
+                    <Route path='/profile/:username' component={Profile} />
                     <Route path='/' component={MainInfo} />
                 </Switch>
                 <Footer />

@@ -10,4 +10,6 @@ export const reqSignup = (user) => ajax('/signup', user, 'POST')
 
 export const reqUser = () => ajax('/user')
 
+export const reqUserProfile = (username) => ajax(`/user/${username}`)
+
 export const reqUploadImage = (imageObject) => ajax('/uploadImage', imageObject, 'POST')

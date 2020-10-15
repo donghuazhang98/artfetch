@@ -8,11 +8,13 @@ import {
     reqLogin,
     reqSignup,
     reqUser,
+    reqUserProfile
 } from '../api'
 
 const errorMsg = (msg) => ({ type: ERROR_MSG, data: msg })
 const authSuccess = (user) => ({ type: AUTH_SUCCESS, data: user })
-const receiveUser = (user) => ({ type: RECEIVE_USER, data:user })
+const receiveUser = (user) => ({ type: RECEIVE_USER, data: user })
+const receiveUserProfile = (user) => ({ type: RECEIVE_USER, data: user })
 export const resetUser = (msg) => ({type: RESET_USER, data: msg})
 
 export const signup = (user) => {
@@ -59,6 +61,18 @@ export const getUser = () => {
         const result = response.data
         if (result.code === 0) {
             dispatch(receiveUser(result.data))
+        } else {
+            dispatch(resetUser(result.msg))
+        }
+    }
+}
+
+export const getUserProfile = (username) => {
+    return async dispatch => {
+        const response = await reqUserProfile(username)
+        const result = response.data
+        if (result.code === 0) {
+            dispatch(receiveUserProfile(result.data))
         } else {
             dispatch(resetUser(result.msg))
         }
