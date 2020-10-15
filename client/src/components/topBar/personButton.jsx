@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom"
 import { withStyles } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -60,7 +61,7 @@ export default function CustomizedMenus(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem onClick={()=>{props.history.push(props.navList[0].path+`/${props.user.username}`)}}>
+        <StyledMenuItem component={NavLink} to={props.navList[0].path+`/${props.user.username}`} replace>
           <ListItemText primary="My Profile" />
         </StyledMenuItem>
         <StyledMenuItem>

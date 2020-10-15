@@ -23,7 +23,7 @@ class TopBar extends React.Component {
                 <PostButton history={this.props.history} navList={this.props.navList} />
             </div>
             <div className="Person">
-                <PersonButton history={this.props.history} navList={this.props.navList} user={this.props.user} logout={this.props.logout} />
+                <PersonButton navList={this.props.navList} user={this.props.user} logout={this.props.logout} />
             </div>
         </div>
       </div>

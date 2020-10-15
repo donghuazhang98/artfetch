@@ -71,6 +71,13 @@ router.get('/user/:username', function(req, res){
   })
 })
 
+router.get('/user/:username/image/:imageID', function(req, res){
+  const username = req.params.username
+  const imageID =  req.params.imageID
+
+  
+})
+
 router.post('/uploadImage', function(req, res, next){
   const { imageName, src } = req.body
 
