@@ -5,6 +5,7 @@ var probe = require('probe-image-size')
 
 const md5 = require('blueimp-md5')
 const UserModel = require('../db/models').UserModel
+const ImageModel = require('../db/models').ImageModel
 //const filter = { password: 0 }
 
 var _ = require('lodash')
@@ -71,39 +72,65 @@ router.get('/user/:username', function(req, res){
   })
 })
 
-router.get('/user/:username/image/:imageID', function(req, res){
-  const username = req.params.username
-  const imageID =  req.params.imageID
-
-  
-})
+// router.get('/user/:username/image/:imageID', function(req, res){
+//   const username = req.params.username
+//   const imageID =  req.params.imageID
+// })
 
 router.post('/uploadImage', function(req, res, next){
-  const { imageName, src } = req.body
-
-  const newImage = {
-    imageName: imageName,
-    src: src,
-  }
+  const { imageName, username, src } = req.body
+  const userid = req.cookies.userid
 
   probe(src).then(result => {
     const newImage = {
       name: imageName,
+      username: username,
       src: src,
       width: result.width,
       height: result.height
     }
-    // console.log(newImage)
-    const userid = req.cookies.userid
-
-    UserModel.findByIdAndUpdate({_id: userid}, { $push: { images: newImage} }, function(err, user) {
-      if (err) {
-        console.log(err)
+    // first save a new image document
+    ImageModel.find({src}, function(err, images) {
+      if (images.length != 0) {
+        res.send({ code: 1, msg: 'This image already existed'})
       } else {
-        res.send({code: 0, data: user})
+        new ImageModel(newImage).save(function(err, image) {
+          if (err) {
+            console.log(err)
+          } else {
+            // update the user image storge
+            UserModel.findByIdAndUpdate({_id: userid}, 
+              { $push: { 
+                images: { 
+                  image_id: image._id, 
+                  name: newImage.name,
+                  src: newImage.src,
+                  width: newImage.width,
+                  height: newImage.height
+                }
+              } }, function(err, user) {
+              if (err) {
+                console.log(err)
+              } else {
+                res.send({code: 0, data: user})
+              }
+            })
+          }
+        })
       }
-    })
+    })  
   })
+})
+
+// get the top 6 images for fitting main gallery
+router.get('/main/gallery', function(req, res) {
+  ImageModel.find({}, function(err, images) {
+    if (!images) {
+      res.send({ code: 1, msg: 'no enough images'})
+    } else {
+      res.send({ code: 0, data: images})
+    }
+  }).sort({ field: 'asc', _id: -1 }).limit(6)
 })
 
 module.exports = router

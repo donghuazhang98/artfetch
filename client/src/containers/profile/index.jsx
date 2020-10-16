@@ -7,16 +7,15 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import { reqUserProfile } from '../../api'
-import { getUser, getUserProfile, resetUser } from '../../redux/actions'
+import { resetUser } from '../../redux/actions'
 
-class Profile extends React.Component {
-
+class Profile extends React.Component {l
     constructor(props) {
         super(props);
         this.state = {
             username: '',
             email: '',
-            imgs: []
+            images: []
         }
     }
 
@@ -27,9 +26,10 @@ class Profile extends React.Component {
             this.setState({
                 username: user.data.username,
                 email: user.data.email,
-                imgs: user.data.images
+                images: user.data.images
             })
         })
+        //console.log(this.state.images)
     }
 
     // update when url changes 
@@ -44,7 +44,7 @@ class Profile extends React.Component {
                 this.setState({
                     username: user.data.username,
                     email: user.data.email,
-                    imgs: user.data.images
+                    images: user.data.images
                 })
             })
         }
@@ -55,15 +55,15 @@ class Profile extends React.Component {
         if (!userid) {
             return <Redirect to='/login' />
         }
-                
+
         if (this.state.username !== '') {
-            if (this.state.imgs.length) {
+            if (this.state.images.length) {
                 return (
                     <div>
                         <div className='artist-head'>
                             <div className='artist-info'>
                                 <div className='avatar'>
-                                    <img className='picture' src='http://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png' />
+                                    <img className='picture' src='http://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png' alt='404.png' />
                                 </div>
                                 <div className='artist-info-text'>
                                     <div className='artist-name'>{this.state.username}</div>
@@ -72,7 +72,7 @@ class Profile extends React.Component {
                             </div>
                         </div>
                         <div className='artist-content'>
-                            <ProfileGallery imgs={this.state.imgs} />
+                            <ProfileGallery images={this.state.images} />
                         </div>
                     </div>
                 )
@@ -82,7 +82,7 @@ class Profile extends React.Component {
                         <div className='artist-head'>
                             <div className='artist-info'>
                                 <div className='avatar'>
-                                    <img className='picture' src='http://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png' />
+                                    <img className='picture' src='http://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png' alt='404.png' />
                                 </div>
                                 <div className='artist-info-text'>
                                     <div className='artist-name'>{this.state.username}</div>
@@ -90,15 +90,14 @@ class Profile extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className='artist-content'>
+                        <div className='image-content'>
                             <div className='image-info-text'>
                                 No images uploaded.
                             </div>
                         </div>      
                     </div>
                 )
-            }
-            
+            }          
         }
         else {
             return null
@@ -108,5 +107,5 @@ class Profile extends React.Component {
 
 export default connect(
     state => ({ user: state.user }),
-    { getUserProfile, resetUser }
+    { resetUser }
 )(Profile)

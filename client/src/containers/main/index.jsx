@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import MainInfo from '../mainInfo'
 import Profile from '../profile'
-import Room from '../room'
+// import Room from '../room'
 import Post from '../post'
 import TopBar from '../../components/topBar'
 import Footer from '../../components/footer'

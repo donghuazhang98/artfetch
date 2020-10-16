@@ -5,14 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 class DemoCarousel extends Component {
   render() {
     return (
-      <Carousel autoPlay infiniteLoop={true} showThumbs={false} >
-        <div style={{ height: "100%", color: "#fff" }}>
-          <img
-            src="https://cdna.artstation.com/p/assets/images/images/022/081/734/large/g-liulian-ffff.jpg?1574056592"
-            alt="404.png"
-          />
-          
-        </div>
+      <Carousel autoPlay infiniteLoop={true} showThumbs={false} showStatus={false}>
         <div style={{ height: "100%", color: "#fff" }}>
           <img
             src="https://cdna.artstation.com/p/assets/images/images/020/326/638/large/pablo-carpio-stoneday.jpg?1567356075"

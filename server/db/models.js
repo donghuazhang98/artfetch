@@ -20,8 +20,8 @@ const userSchema = mongoose.Schema({
 });
 
 const imageSchema = mongoose.Schema({
-    user: {type: String, required: true},
-    image_id: {type: Number, required: true},
+    name: {type: String, required: true},
+    username: {type: String, required: true},
     src: {type: String, required: true},
     width: {type: Number, require: true},
     height: {type: Number, required: true}
