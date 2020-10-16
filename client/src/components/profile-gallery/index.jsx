@@ -1,23 +1,23 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import Gallery from "react-photo-gallery";
 
 export default class ProfileGallery extends React.Component {
     constructor(props) {
         super(props)
         this.state={
-            imgs: []
+            images: []
         }
     }
 
     componentDidMount() {
         this.setState({
-            imgs: this.state.imgs.concat(this.props.imgs)
+            images: this.state.images.concat(this.props.images)
         })
     }
 
     render() {
         return (
-            <Gallery photos={this.state.imgs} />
+            <Gallery photos={this.state.images} direction={"row"}/>
         )
     }
 }

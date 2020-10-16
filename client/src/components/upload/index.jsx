@@ -41,6 +41,7 @@ class Upload extends React.Component {
                     
                     let imageObj = {
                         imageName: img.name,
+                        username: username,
                         src: url, 
                     }
                     reqUploadImage(imageObj)

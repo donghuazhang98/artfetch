@@ -1,63 +1,62 @@
-.TopLine{ 
-    width: 100%; 
+.TopLine {
+    width: 100%;
     height: 70px;
     display: flex;
     align-items: center;
     .Icon {
-      width: 170px;
-      margin-right: 4vw;
-      box-sizing: border-box;
-      padding-left: 10px;
-      display: flex;
+        width: 170px;
+        margin-right: 4vw;
+        box-sizing: border-box;
+        padding-left: 10px;
+        display: flex;
     }
-    .Search{ 
-      width: 60vw;    
-    } 
+    .Search {
+        width: 60vw;
+    }
     .rightBar {
-      width: 40vw;
-      .Post {
-        float: right;
-        padding-right: 10px;
-      }
-      .Person{ 
-        float:right; 
-        padding-right: 20px;
-      } 
+        width: 40vw;
+        .Post {
+            float: right;
+            padding-right: 10px;
+        }
+        .Person {
+            float: right;
+            padding-right: 20px;
+        }
     }
-    
-  } 
-  #Menu{ 
-    float:left; 
-    width:250px; 
-    height: 50px; 
-    border:1px solid #CCC; 
-    display:block; 
-    background-color:yellow; 
-  } 
-  
-  #Search{ 
-    margin-left:260px; 
-    min-height:50px; 
-    display:block; 
-    background-color:red; 
-  } 
-  
-  #Person{ 
-    float:right; 
-    display:block; 
-    height:50px; 
-    background-color:#FFF; 
-  } 
-  
-  #Search > .inner{ 
-    height:50px; 
-    background-color:red; 
-    margin-right:20px; 
-  } 
-  
-  #Person > .inner{ 
-    background-color:green; 
-    min-width:150px; 
-    height:50px; 
-    margin-left:10px; 
-  }
+}
+#Menu {
+    float: left;
+    width: 250px;
+    height: 50px;
+    border: 1px solid #ccc;
+    display: block;
+    background-color: yellow;
+}
+
+#Search {
+    margin-left: 260px;
+    min-height: 50px;
+    display: block;
+    background-color: red;
+}
+
+#Person {
+    float: right;
+    display: block;
+    height: 50px;
+    background-color: #fff;
+}
+
+#Search > .inner {
+    height: 50px;
+    background-color: red;
+    margin-right: 20px;
+}
+
+#Person > .inner {
+    background-color: green;
+    min-width: 150px;
+    height: 50px;
+    margin-left: 10px;
+}

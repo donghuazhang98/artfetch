@@ -1,26 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap");
 
 $blue: #3c6382;
 $waterfall: #38ada9;
-$grey: #979A9A;
+$grey: #979a9a;
 
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     height: 100%;
-    //background: url("./img/close-up-photo-of-painting-3219899.jpg") no-repeat center center;
-    //background-size: auto;
-    //background-size: cover;
-    //background-repeat: no-repeat;
-    
+
     .container {
         overflow: hidden;
         position: relative;
         width: 750px;
         height: 500px;
         margin: 80px auto 0;
-        background-color: #EAECEE;
-        box-shadow: (rgba(0, 0, 0, .2) 0px 10px 30px 0px);
-        
+        background-color: #eaecee;
+        box-shadow: (rgba(0, 0, 0, 0.2) 0px 10px 30px 0px);
+
         .first-half {
             box-sizing: border-box;
             width: 50%;
@@ -32,7 +28,7 @@ body {
                 font-weight: 700;
                 text-align: center;
                 margin: 0px auto 15px auto;
-                color: $blue; 
+                color: $blue;
             }
             .tabs {
                 width: 100%;
@@ -43,14 +39,15 @@ body {
                     padding: 20px 15px 10px;
                     margin-bottom: -1px; //cover the bottom border;
                     cursor: pointer;
-                    
+
                     a {
                         font-size: 12px;
                         text-decoration: none;
                         color: $waterfall;
                         transition: 0.15s ease-in-out;
                     }
-                    &.active, &:hover {
+                    &.active,
+                    &:hover {
                         a {
                             color: $blue;
                         }
@@ -71,7 +68,7 @@ body {
                         border: 0;
                         box-sizing: border-box;
 
-                        &.input {      
+                        &.input {
                             font-size: 14px;
                             display: block;
                             width: 100%;
@@ -106,12 +103,12 @@ body {
                 .input-group {
                     width: 100%;
                 }
-                
+
                 .submit-group {
                     width: 100%;
                     position: absolute;
                     bottom: 0;
-                    
+
                     .extra {
                         width: 100%;
                         a {
@@ -125,7 +122,6 @@ body {
                             }
                         }
                     }
-                    
                 }
             }
         }

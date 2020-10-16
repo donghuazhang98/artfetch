@@ -1,38 +1,45 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
-import { photos } from "./photos";
-import * as title from './title/gallery-title.png' 
+// import Carousel, { Modal, ModalGateway } from "react-images";
 
 import "./styles.scss";
 
+import { withRouter } from 'react-router-dom'
+
 function App(props) {
   
-  const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  // const [currentImage, setCurrentImage] = useState(0);
+  // const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  const [images, setImages] = useState([]);
 
-  const openLightbox = useCallback((event, { photo, index }) => {
-    setCurrentImage(index);
-    setViewerIsOpen(true);
-  }, []);
+  useEffect(() => {
+    setImages(props.images)
+  }, [props.images])
 
-  const closeLightbox = () => {
-    setCurrentImage(0);
-    setViewerIsOpen(false);
-  };
+  // const openLightbox = useCallback((event, { photo, index }) => {
+  //   console.log(images[index].username)
+  //   setCurrentImage(index);
+  //   setViewerIsOpen(true);
+  // });
+
+  // const closeLightbox = () => {
+  //   setCurrentImage(0);
+  //   setViewerIsOpen(false);
+  // };
+
+  const directToProfile = useCallback((event, { photo, index }) => {
+    props.history.push(`/profile/${images[index].username}`)
+  });
 
   return (
     <div>
-      <div className='gallery-title'>
-        <img src={title} />
-      </div>
-      <Gallery photos={photos} onClick={openLightbox} />
-      <ModalGateway>
+      <Gallery photos={images} onClick={directToProfile} />
+      {/* <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>
             <Carousel
               currentIndex={currentImage}
-              views={photos.map(x => ({
+              views={images.map(x => ({
                 ...x,
                 srcset: x.srcSet,
                 caption: x.title
@@ -40,13 +47,13 @@ function App(props) {
             />
           </Modal>
         ) : null}
-      </ModalGateway>
+      </ModalGateway> */}
     </div>
   );
 }
 
-//const BasicRows = () => <Gallery photos={this.props.photos} />;
+const BasicRows = () => <Gallery photos={this.props.photos} />;
 
-export default App;
+export default withRouter(App);
 
 
