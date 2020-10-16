@@ -5,7 +5,7 @@ Overview:
 - Users can post their art works on their profile pages and view other artists' exhibitions
 
 # run
-First go in the server directory, run:
+In the server directory, run:
 ### `npm start`
 
 In the client directory, run:
