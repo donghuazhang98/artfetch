@@ -1,8 +1,8 @@
 # artfetch
 
 Overview:
-- An art website demo that exhibits the CG gallery 
-- Users can post their art work on their profile pages and view other artists' exhibitions
+- An gallery website that exhibits the CG art work
+- Users can post their art works on their profile pages and view other artists' exhibitions
 
 # run
 First go in the server directory, run:
