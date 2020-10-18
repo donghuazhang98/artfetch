@@ -6,9 +6,11 @@ Overview:
 
 # run
 In the server directory, run:
+### `npm install`
 ### `npm start`
 
 In the client directory, run:
+### `npm install`
 ### `npm start`
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
