@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 var express = require('express')
 var router = express.Router()
 
@@ -72,10 +73,30 @@ router.get('/user/:username', function(req, res){
   })
 })
 
-// router.get('/user/:username/image/:imageID', function(req, res){
-//   const username = req.params.username
-//   const imageID =  req.params.imageID
-// })
+router.get('/user/:username/image/:image_id', function(req, res) {
+  const username = req.params.username
+  const image_id = req.params.image_id
+
+  UserModel.findOne({
+    username: username,
+  },
+  {
+    images: {
+      // project the user with only the specific image
+      $elemMatch: {
+        _id: mongoose.Types.ObjectId(image_id)
+      },
+    },
+    email: 1,
+  }
+  , function(err, user) {
+    if (!user) {
+      res.send({ code: 1, msg: 'no such user' })
+    } else {
+      res.send({ code: 0, data: user })
+    }
+  })
+})
 
 router.post('/uploadImage', function(req, res, next){
   const { imageName, username, src } = req.body
@@ -102,7 +123,8 @@ router.post('/uploadImage', function(req, res, next){
             UserModel.findByIdAndUpdate({_id: userid}, 
               { $push: { 
                 images: { 
-                  image_id: image._id, 
+                  _id: image._id, 
+                  username: username,
                   name: newImage.name,
                   src: newImage.src,
                   width: newImage.width,
