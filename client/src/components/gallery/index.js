@@ -31,9 +31,13 @@ function App(props) {
     props.history.push(`/profile/${images[index].username}`)
   });
 
+  const directToRoom = useCallback((event, { photo, index }) => {
+    props.history.push(`/profile/${images[index].username}/image/${images[index]._id}`)
+  });
+
   return (
     <div>
-      <Gallery photos={images} onClick={directToProfile} />
+      <Gallery photos={images} onClick={directToRoom} />
       {/* <ModalGateway>
         {viewerIsOpen ? (
           <Modal onClose={closeLightbox}>
@@ -52,7 +56,7 @@ function App(props) {
   );
 }
 
-const BasicRows = () => <Gallery photos={this.props.photos} />;
+// const BasicRows = () => <Gallery photos={this.props.photos} />;
 
 export default withRouter(App);
 

@@ -1,38 +1,71 @@
 import React from 'react'
 import './index.scss'
-import Cookies from 'js-cookie'
 import { connect } from 'react-redux'
 
-import { Redirect } from 'react-router-dom'
+import { reqImage } from '../../api'
 
-import { getUser, getUserProfile, resetUser } from '../../redux/actions'
+import ProfileGallery from '../../components/profile-gallery'
+import About from '../../components/about'
 
 class Room extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            username: '',
+            email: '',
+            image: null,
         }
     }
 
     componentDidMount() {
-        const userid = Cookies.get('userid')
-        const { user, match: { params } } = this.props
-        if (userid && !user._id) {
-            this.props.getUserProfile(params.username)
-        }
+        const { match: { params } } = this.props
+
+        reqImage(params.username, params.image_id).then(({ data: user }) => {
+            this.setState({
+                username: params.username,
+                email: user.data.email,
+                image: user.data.images[0]
+            })
+        })
     }
+
+    // update when url changes 
+    componentDidUpdate(previousProps) {
+        // compare two url username parameters
+        const newUsername = this.props.match.params.username
+        const oldUsername = previousProps.match.params.username
+        const newImageID = this.props.match.params.image_id
+        const oldImageID = previousProps.match.params.image_id
+
+        if (oldUsername !== newUsername && newImageID !== oldImageID) {
+
+            reqImage(newUsername, newImageID).then(({ data: user }) => {
+                this.setState({
+                    username: newUsername,
+                    email: user.data.email,
+                    images: user.data.images[0]
+                })
+            })
+        }
+    }    
     
     render() {
-        const userid = Cookies.get('userid')
-        if (!userid) {
-            return <Redirect to='/login' />
+        if (this.state.image != null) {
+            return(
+                <div className='room-info'>
+                    <ProfileGallery images={this.state.image} />
+                    <About username={this.state.username} />
+                </div>
+            )   
         }
+        else {
+            return null
+        } 
     
     }
 }
 
 export default connect(
     state => ({ user: state.user }),
-    { getUser, getUserProfile, resetUser }
+    {}
 )(Room)

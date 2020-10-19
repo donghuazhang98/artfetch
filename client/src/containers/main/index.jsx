@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import MainInfo from '../mainInfo'
 import Profile from '../profile'
-// import Room from '../room'
+import Room from '../room'
 import Post from '../post'
 import TopBar from '../../components/topBar'
 import Footer from '../../components/footer'
@@ -55,8 +55,8 @@ class Main extends React.Component {
                 <TopBar className='top-bar' navList={this.navList} user={user} logout={this.handlerLogout} />
                 <Switch>
                     <Route path='/post' component={Post} />
-                    <Route path='/profile/:username' component={Profile} />
-                    {/* <Route path='/profile/:username/image/:imageID' component={Room} /> */}
+                    <Route path='/profile/:username' exact component={Profile} />
+                    <Route path='/profile/:username/image/:image_id' component={Room} />
                     <Route path='/' component={MainInfo} />
                 </Switch>
                 <Footer />

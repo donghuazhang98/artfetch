@@ -1,13 +1,11 @@
 import React from 'react'
 import ProfileGallery from '../../components/profile-gallery'
+import DemoGallery from '../../components/gallery'
 import './index.scss'
-import Cookies from 'js-cookie'
+
 import { connect } from 'react-redux'
 
-import { Redirect } from 'react-router-dom'
-
 import { reqUserProfile } from '../../api'
-import { resetUser } from '../../redux/actions'
 
 class Profile extends React.Component {l
     constructor(props) {
@@ -51,11 +49,6 @@ class Profile extends React.Component {l
     }
 
     render() {
-        const userid = Cookies.get('userid')
-        if (!userid) {
-            return <Redirect to='/login' />
-        }
-
         if (this.state.username !== '') {
             if (this.state.images.length) {
                 return (
@@ -72,7 +65,7 @@ class Profile extends React.Component {l
                             </div>
                         </div>
                         <div className='artist-content'>
-                            <ProfileGallery images={this.state.images} />
+                            <DemoGallery images={this.state.images} />
                         </div>
                     </div>
                 )
@@ -105,7 +98,4 @@ class Profile extends React.Component {l
     }
 }
 
-export default connect(
-    state => ({ user: state.user }),
-    { resetUser }
-)(Profile)
+export default Profile

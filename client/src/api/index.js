@@ -12,6 +12,8 @@ export const reqUser = () => ajax('/user')
 
 export const reqUserProfile = (username) => ajax(`/user/${username}`)
 
+export const reqImage = (username, image_id) => ajax(`/user/${username}/image/${image_id}`)
+
 export const reqUploadImage = (imageObject) => ajax('/uploadImage', imageObject, 'POST')
 
 export const reqMainGallery = () => ajax('/main/gallery')
