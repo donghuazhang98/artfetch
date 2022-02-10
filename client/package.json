@@ -99,7 +99,7 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.12.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react-app-rewired": "^2.1.5",
     "react-social-icons": "^4.1.0",
     "redux-devtools-extension": "^2.13.8"
